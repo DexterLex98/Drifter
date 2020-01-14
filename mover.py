@@ -1,3 +1,7 @@
+# Author: Suraj Das
+# Developed: 13-01-2020
+# Version: 1.0
+# Stage: Alpha
 
 import sys
 import os
@@ -8,8 +12,13 @@ print("\033[1;32;40m Mover \n")
 #This parses the file path
 Folderpath = input("Give Folder Path:")
 MovePath = input("Where you want to move:")
+extensionType = input("Extension Type:")
+
 dirArg = Folderpath
 movArg = MovePath
+extenArg = extensionType
+
+print("Extension selected: {}\n".format(extenArg))
 
 print(dirArg)
 DriveSplit = dirArg.split(os.sep)
@@ -19,14 +28,14 @@ LG.info("Drive Splitted : {}".format(DriveSplit))
 # print("Files:\n")
 dirList = os.listdir(dirArg)
 
-def File_recognizer(directory):
+def File_recognizer(directory, exten):
     os.chdir(Folderpath)
     count = 0
     psdfiles = []
     try:
         for i, dirfiles in enumerate(directory):
             psdFiles = os.path.splitext(dirfiles)
-            if psdFiles[1] == '.psd':
+            if psdFiles[1] == exten:
                 psd_dirs = os.path.realpath(dirfiles)
                 psdfiles.insert(i,psd_dirs)
             # elif psdFiles[1] != '.psd':
@@ -37,7 +46,7 @@ def File_recognizer(directory):
     return psdfiles
 
 # Storing the data files
-psdData = File_recognizer(dirList)
+psdData = File_recognizer(dirList,extenArg)
 
 def moveFiles(MV_files,User_directory):
     try:
