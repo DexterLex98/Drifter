@@ -9,7 +9,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Using Drifter 
 Within the directory Drifter you will find [mover.py](mover.py) 
-- Open the directory where you have extracted/cloned drifter in CMD/Powershell mode by "Ctrl+Shift+RightClick", within the CMD you have to run the script.
+- Open the directory where you have extracted/cloned drifter in CMD/Powershell mode by "Ctrl+Shift+RightClick", within CMD you have to run the script.
+
 ## Usage
 `
 python3 mover.py
