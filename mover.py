@@ -8,8 +8,9 @@ import os
 import logging as LG
 import errno as error
 
-print("\033[1;32;40m Mover \n")
-#This parses the file path
+print("\033[1;32;40m Drifter \n")
+# Getting User inputs
+
 Folderpath = input("Give Folder Path:")
 MovePath = input("Where you want to move:")
 extensionType = input("Extension Type:")
@@ -25,7 +26,7 @@ DriveSplit = dirArg.split(os.sep)
 LG.info("Drive Splitted : {}".format(DriveSplit))
 
 
-# print("Files:\n")
+# print("Files:\n") // DEBUG-MODE
 dirList = os.listdir(dirArg)
 
 def File_recognizer(directory, exten):
@@ -38,14 +39,16 @@ def File_recognizer(directory, exten):
             if psdFiles[1] == exten:
                 psd_dirs = os.path.realpath(dirfiles)
                 psdfiles.insert(i,psd_dirs)
-            # elif psdFiles[1] != '.psd':
-            #     print("Not PSD.")
+            # elif psdFiles[1] != exten:
+            #     print("Not {} file".format(exten))
+
     except FileNotFoundError:
         pass
 
     return psdfiles
 
-# Storing the data files
+# Storing files
+
 psdData = File_recognizer(dirList,extenArg)
 
 def moveFiles(MV_files,User_directory):
@@ -57,7 +60,7 @@ def moveFiles(MV_files,User_directory):
         for files in MV_files:
             cmd = 'move "{}" "{}" '.format(files,User_directory)
             os.system(cmd)
-        # LG.warning(cmd)
+        # LG.warning(cmd) // DEBUG-LOGGING
 
         print("\nFiles Moved !")
         print("\n========")
